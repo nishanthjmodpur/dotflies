@@ -111,6 +111,10 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+-- Tab commands
+vim.keymap.set("n", "<A-t>", ":tabnew<CR>", { desc = "Create a new tab" })
+vim.keymap.set("n", "<A-w>", ":tabclose<CR>", { desc = "Close the currently active tab" })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -617,11 +621,11 @@ require("lazy").setup({
 			require("lualine").setup({
 				options = {
 					icons_enabled = true, -- Enable icons (useful if you have nerd fonts)
-					theme = "auto", -- You can change this to your preferred theme
-					section_separators = { left = "", right = "" }, -- these create a stylish separator
-					component_separators = { left = "", right = "" },
-					-- component_separators = { "", "" }, -- Customize separators between components
-					-- section_separators = { "", "" }, -- Customize separators between sections
+					theme = "codedark", -- You can change this to your preferred theme
+					-- section_separators = { left = "", right = "" }, -- these create a stylish separator
+					-- component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" }, -- these create a stylish separator
+					component_separators = { left = "|", right = "|" },
 					disabled_filetypes = { "NvimTree" }, -- Disable lualine in specific filetypes
 				},
 				sections = {
