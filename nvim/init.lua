@@ -493,40 +493,6 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{
-		"m4xshen/autoclose.nvim",
-		config = function()
-			require("autoclose").setup({
-				-- Example configuration options
-				disable_filetype = { "TelescopePrompt", "neo-tree" }, -- Disable in certain filetypes
-				check_ts = true, -- Use Treesitter for additional features
-			})
-		end,
-		event = "InsertEnter",
-	},
-	{
-		-- nvim-tree plugin
-		{
-			"nvim-tree/nvim-tree.lua",
-			opts = {
-				-- Customize options if you need
-				auto_reload_on_write = true,
-				hijack_netrw = true,
-				update_cwd = true,
-				view = {
-					width = 30,
-					side = "left",
-					auto_resize = true,
-				},
-			},
-			config = function()
-				require("nvim-tree").setup()
-				-- Keymaps and setup for nvim-tree
-				vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle NvimTree" })
-			end,
-		},
-	},
-
 	{ -- Autoformat
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
@@ -570,40 +536,6 @@ require("lazy").setup({
 		},
 	},
 
-	{
-		"rebelot/kanagawa.nvim",
-		init = function()
-			-- Default options:
-			require("kanagawa").setup({
-				compile = false, -- enable compiling the colorscheme
-				undercurl = true, -- enable undercurls
-				commentStyle = { italic = true },
-				functionStyle = {},
-				keywordStyle = { italic = true },
-				statementStyle = { bold = true },
-				typeStyle = {},
-				transparent = false, -- do not set background color
-				dimInactive = false, -- dim inactive window `:h hl-NormalNC`
-				terminalColors = true, -- define vim.g.terminal_color_{0,17}
-				colors = { -- add/modify theme and palette colors
-					palette = {},
-					theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
-				},
-				overrides = function(colors) -- add/modify highlights
-					return {}
-				end,
-				theme = "lotus", -- Load theme
-				background = { -- map the value of 'background' option to a theme
-					dark = "wave", -- try "dragon" !
-					light = "lotus",
-				},
-			})
-
-			-- setup must be called before loading
-			vim.cmd("colorscheme kanagawa")
-		end,
-	},
-	--
 	-- Highlight todo, notes, etc in comments
 	{
 		"folke/todo-comments.nvim",
@@ -613,58 +545,6 @@ require("lazy").setup({
 	},
 	{
 		"ThePrimeagen/vim-be-good",
-	},
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "kyazdani42/nvim-web-devicons" }, -- Required for icons
-		config = function()
-			require("lualine").setup({
-				options = {
-					icons_enabled = true, -- Enable icons (useful if you have nerd fonts)
-					theme = "codedark", -- You can change this to your preferred theme
-					-- section_separators = { left = "", right = "" }, -- these create a stylish separator
-					-- component_separators = { left = "", right = "" },
-					section_separators = { left = "", right = "" }, -- these create a stylish separator
-					component_separators = { left = "|", right = "|" },
-					disabled_filetypes = { "NvimTree" }, -- Disable lualine in specific filetypes
-				},
-				sections = {
-					-- Mode (INSERT, NORMAL, etc.)
-					lualine_a = { { "mode" } },
-
-					-- Git information (branch and diff)
-					lualine_b = { "branch", "diff" },
-
-					-- Filename and file information
-					lualine_c = { "filename" },
-
-					-- Encoding, fileformat, filetype
-					lualine_x = {
-						{
-							function()
-								local clients = vim.lsp.get_active_clients()
-								if #clients > 0 then
-									-- Show the name of the first active LSP client (e.g., clangd)
-									return clients[1].name
-								else
-									return "No LSP"
-								end
-							end,
-						},
-						"encoding",
-						"fileformat",
-						"filetype",
-					},
-
-					-- Cursor progress
-					lualine_y = { "progress" },
-
-					-- Location: Line number and column
-					lualine_z = { "location" },
-				},
-				extensions = { "fugitive" }, -- Enable fugitive for git status in the statusline
-			})
-		end,
 	},
 	{
 		"saghen/blink.cmp",
@@ -756,14 +636,14 @@ require("lazy").setup({
 	-- require 'kickstart.plugins.lint',
 	-- require 'kickstart.plugins.autopairs',
 	-- require 'kickstart.plugins.neo-tree',
-	-- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+	-- require("kickstart.plugins.gitsigns"), -- adds gitsigns recommend keymaps
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    This is the easiest way to modularize your config.
 	--
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 	--    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-	-- { import = "custom.plugins" },
+	{ import = "custom.plugins" },
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
