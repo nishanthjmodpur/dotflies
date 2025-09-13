@@ -26,7 +26,8 @@ return {
 				lualine_x = {
 					{
 						function()
-							local clients = vim.lsp.get_active_clients()
+							-- local clients = vim.lsp.get_active_clients()
+							local clients = vim.lsp.get_clients({ bufnr = 0 })
 							if #clients > 0 then
 								-- Show the name of the first active LSP client (e.g., clangd)
 								return clients[1].name
@@ -47,6 +48,12 @@ return {
 				lualine_z = { "location" },
 			},
 			extensions = { "fugitive" }, -- Enable fugitive for git status in the statusline
+		})
+
+		vim.api.nvim_create_autocmd({ "BufEnter", "LspAttach", "LspDetach" }, {
+			callback = function()
+				require("lualine").refresh()
+			end,
 		})
 	end,
 }
