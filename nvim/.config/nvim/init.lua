@@ -377,122 +377,6 @@ require("lazy").setup({
 		},
 	},
 	{ "Bilal2453/luvit-meta", lazy = true },
-
-	-- {
-	-- 	-- Main LSP Configuration
-	-- 	"neovim/nvim-lspconfig",
-	-- 	dependencies = {
-	-- 		-- Automatically install LSPs and related tools to stdpath for Neovim
-	-- 		{ "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
-	-- 		"williamboman/mason-lspconfig.nvim",
-	-- 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-	-- 		"saghen/blink.cmp",
-	--
-	-- 		-- Useful status updates for LSP.
-	-- 		{ "j-hui/fidget.nvim", opts = {} },
-	--
-	-- 		-- Allows extra capabilities provided by blink.cmp
-	-- 		"saghen/blink.cmp",
-	-- 	},
-	-- 	config = function()
-	-- 		-- Load blink.cmp and set up the capabilities for LSP
-	-- 		local blink_cmp = require("blink.cmp")
-	--
-	-- 		-- Get LSP capabilities from blink.cmp instead of nvim-cmp
-	-- 		local capabilities = blink_cmp.get_lsp_capabilities()
-	--
-	-- 		-- LSP configuration
-	-- 		vim.api.nvim_create_autocmd("LspAttach", {
-	-- 			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
-	-- 			callback = function(event)
-	-- 				-- Utility function for setting keymaps
-	-- 				local map = function(keys, func, desc, mode)
-	-- 					mode = mode or "n"
-	-- 					vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-	-- 				end
-	--
-	-- 				-- Keymaps for LSP actions
-	-- 				map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-	-- 				map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-	-- 				map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-	-- 				map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-	-- 				map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-	-- 				map(
-	-- 					"<leader>ws",
-	-- 					require("telescope.builtin").lsp_dynamic_workspace_symbols,
-	-- 					"[W]orkspace [S]ymbols"
-	-- 				)
-	-- 				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-	-- 				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
-	-- 				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-	--
-	-- 				-- Highlight references when cursor is held on a word
-	-- 				local client = vim.lsp.get_client_by_id(event.data.client_id)
-	-- 				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-	-- 					local highlight_augroup =
-	-- 						vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
-	-- 					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-	-- 						buffer = event.buf,
-	-- 						group = highlight_augroup,
-	-- 						callback = vim.lsp.buf.document_highlight,
-	-- 					})
-	-- 					vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-	-- 						buffer = event.buf,
-	-- 						group = highlight_augroup,
-	-- 						callback = vim.lsp.buf.clear_references,
-	-- 					})
-	--
-	-- 					vim.api.nvim_create_autocmd("LspDetach", {
-	-- 						group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
-	-- 						callback = function(event2)
-	-- 							vim.lsp.buf.clear_references()
-	-- 							vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
-	-- 						end,
-	-- 					})
-	-- 				end
-	--
-	-- 				-- Toggle inlay hints if supported by the LSP
-	-- 				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-	-- 					map("<leader>th", function()
-	-- 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-	-- 					end, "[T]oggle Inlay [H]ints")
-	-- 				end
-	-- 			end,
-	-- 		})
-	--
-	-- 		-- Set LSP capabilities
-	-- 		local servers = {
-	-- 			lua_ls = {
-	-- 				settings = {
-	-- 					Lua = {
-	-- 						completion = {
-	-- 							callSnippet = "Replace",
-	-- 						},
-	-- 					},
-	-- 				},
-	-- 			},
-	-- 		}
-	--
-	-- 		-- Ensure the servers and tools above are installed
-	-- 		require("mason").setup()
-	-- 		local ensure_installed = vim.tbl_keys(servers or {})
-	-- 		vim.list_extend(ensure_installed, {
-	-- 			"stylua", -- Used to format Lua code
-	-- 		})
-	-- 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-	--
-	-- 		-- LSP config for mason-lspconfig
-	-- 		require("mason-lspconfig").setup({
-	-- 			handlers = {
-	-- 				function(server_name)
-	-- 					local server = servers[server_name] or {}
-	-- 					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-	-- 					require("lspconfig")[server_name].setup(server)
-	-- 				end,
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
 	{ -- Autoformat
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
@@ -546,44 +430,6 @@ require("lazy").setup({
 	{
 		"ThePrimeagen/vim-be-good",
 	},
-	-- {
-	-- 	"saghen/blink.cmp",
-	-- 	dependencies = "rafamadriz/friendly-snippets",
-	-- 	version = "*", -- Consider pinning to a specific version if issues persist
-	-- 	opts = {
-	-- 		keymap = {
-	-- 			preset = "none",
-	-- 			-- Main completion keymaps
-	-- 			["<Tab>"] = { "select_next", "fallback" },
-	-- 			["<S-Tab>"] = { "select_prev", "fallback" },
-	-- 			["<Up>"] = { "snippet_backward", "fallback" },
-	-- 			["<Down>"] = { "snippet_forward", "fallback" },
-	-- 			["<CR>"] = { "select_and_accept", "fallback" },
-	-- 			["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
-	-- 		},
-	-- 		-- Configure command-line completion (if needed)
-	-- 		cmdline = {
-	-- 			keymap = {
-	-- 				preset = "none",
-	-- 				["<Tab>"] = { "select_next", "fallback" },
-	-- 				["<S-Tab>"] = { "select_prev", "fallback" },
-	-- 				["<C-space>"] = { "show", "fallback" },
-	-- 				["<C-y>"] = { "select_and_accept" },
-	-- 				["<C-e>"] = { "cancel" },
-	-- 			},
-	-- 			completion = { menu = { auto_show = true } },
-	-- 		},
-	-- 		appearance = {
-	-- 			use_nvim_cmp_as_default = false,
-	-- 			nerd_font_variant = "mono",
-	-- 		},
-	-- 		sources = {
-	-- 			default = { "lsp", "path", "snippets", "buffer" },
-	-- 		},
-	-- 		signature = { enabled = true },
-	-- 	},
-	-- 	opts_extend = { "sources.default" },
-	-- },
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -670,6 +516,5 @@ require("lazy").setup({
 -- vim: ts=2 sts=2 sw=2 et
 
 -- Set keymap to jump half page down and center the view along with it (remap)
-
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "center and move down" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "center and move up" })
