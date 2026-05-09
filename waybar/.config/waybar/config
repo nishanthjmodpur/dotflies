@@ -1,0 +1,96 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 6,
+
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["clock"],
+  "modules-right": ["pulseaudio", "network", "custom/bluetooth", "custom/brightness", "battery", "custom/logout", "tray"],
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+	"format": "{name}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "urgent": "",
+      // "active": "",
+      "default": ""
+    }
+  },
+
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 50
+  },
+
+  "clock": {
+    "format": "  {:%H:%M | %d %b}",
+    "tooltip-format": "{:%A, %d %B %Y}"
+  },
+
+  "cpu": {
+    "format": "  {usage}%",
+    "tooltip": true
+  },
+
+  "memory": {
+    "format": "  {}%"
+  },
+
+  "network": {
+    "format-wifi": "   {essid}",
+    "format-ethernet": "󰈀 Wired",
+    "format-disconnected": "⚠ Disconnected",
+    "tooltip-format": "{ifname}: {ipaddr}"
+  },
+
+  "pulseaudio": {
+    "format": "  {volume}%",
+    "format-muted": " muted",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+
+   "battery": {
+    "interval": 5,
+    "states": {
+        "warning": 30,
+        "critical": 15
+    },
+    "format": " {icon} {capacity}%",
+    "format-charging": "{icon} {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip": true
+ },
+
+  "custom/logout": {
+	  "format": "  ",
+	  "tooltip": "Logout",
+	  "on-click": "wlogout",
+	  "interval": 0
+  },
+
+  "custom/bluetooth": {
+	"exec": "~/.config/waybar/scripts/bluetooth.sh",
+    "interval": 5,
+    "format": "{}",
+    "on-click": "~/.config/waybar/scripts/bluetooth-toggle.sh"
+  },
+
+"custom/brightness": {
+    "exec": "~/.config/waybar/scripts/brightness.sh",
+    "interval": 2,
+    "format": " {}%",
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-"
+},
+
+  "tray": {
+    "spacing": 20
+  }
+}
