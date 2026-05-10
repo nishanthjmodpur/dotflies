@@ -7,7 +7,7 @@ return {
 			hijack_netrw = true,
 			update_cwd = true,
 			view = {
-				width = 30,
+				width = 40,
 				side = "left",
 				auto_resize = true,
 			},
