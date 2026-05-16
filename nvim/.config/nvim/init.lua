@@ -490,6 +490,18 @@ require("lazy").setup({
 	},
 })
 
+vim.lsp.config("qmlls", {
+	cmd = {
+		"qmlls6",
+		"-I",
+		"/usr/lib/qt6/qml",
+	},
+	filetypes = { "qml", "qmljs" },
+	root_markers = { ".git" },
+})
+
+vim.lsp.enable("qmlls")
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 

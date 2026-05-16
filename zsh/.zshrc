@@ -125,3 +125,4 @@ zstyle ':vcs_info:*' check-for-changes false
 
 setopt PROMPT_SUBST
 PROMPT='(%F{red}${vcs_info_msg_0_}%f) %F{cyan}%n@%m %F{yellow}%~ %# '
+export QML_IMPORT_PATH=/usr/lib/qt6/qml
