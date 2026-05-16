@@ -1,0 +1,109 @@
+/* ~/.config/rofi/bluetooth.rasi */
+
+configuration {
+    modi: "drun,run";
+    show-icons: true;
+    font: "JetBrainsMono Nerd Font 12";
+}
+
+* {
+    bg:         #11111b;
+    bg-alt:     #1e1e2e;
+    fg:         #cdd6f4;
+    selected:   #89b4fa;
+    active:     #a6e3a1;
+    urgent:     #f38ba8;
+
+    border-colour: #89b4fa;
+
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    width: 30%;
+    location: center;
+    anchor: center;
+
+    transparency: "real";
+    background-color: @bg;
+
+    border: 2px;
+    border-color: @border-colour;
+    border-radius: 14px;
+
+    padding: 18px;
+}
+
+mainbox {
+    spacing: 12px;
+    children: [ "inputbar", "listview" ];
+}
+
+inputbar {
+    background-color: @bg-alt;
+
+    border-radius: 10px;
+    padding: 10px;
+    spacing: 10px;
+
+    children: [ "prompt", "entry" ];
+}
+
+prompt {
+    text-color: @selected;
+    font: "JetBrainsMono Nerd Font Bold 12";
+}
+
+entry {
+    placeholder: "Search device...";
+    placeholder-color: #6c7086;
+}
+
+listview {
+    lines: 10;
+    columns: 1;
+
+    fixed-height: false;
+    spacing: 8px;
+    scrollbar: false;
+}
+
+element {
+    background-color: transparent;
+    text-color: @fg;
+
+    border-radius: 10px;
+    padding: 10px;
+}
+
+element normal.normal {
+    background-color: transparent;
+}
+
+element selected.normal {
+    background-color: @selected;
+    text-color: #11111b;
+}
+
+element selected.active {
+    background-color: @active;
+    text-color: #11111b;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+scrollbar {
+    width: 4px;
+    handle-color: @selected;
+    handle-width: 8px;
+    border-radius: 10px;
+}
+
+mode-switcher {
+    enabled: false;
+}

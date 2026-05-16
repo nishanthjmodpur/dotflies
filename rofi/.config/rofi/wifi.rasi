@@ -1,0 +1,179 @@
+/* ~/.config/rofi/wifi.rasi */
+
+configuration {
+    modi: "drun,run,filebrowser,window";
+    show-icons: true;
+
+    font: "JetBrainsMono Nerd Font Mono 12";
+
+    display-drun: " Apps";
+    display-run: "󰆍 Run";
+    display-filebrowser: " Files";
+    display-window: " Windows";
+
+    drun-display-format: "{icon}  {name}";
+}
+
+/* =========================
+   Catppuccin Mocha Palette
+   ========================= */
+
+* {
+    bg:           #1e1e2e;
+    bg-alt:       #313244;
+
+    fg:           #cdd6f4;
+    fg-alt:       #bac2de;
+
+    border:       #89b4fa;
+
+    selected:     #89b4fa;
+    selected-fg:  #11111b;
+
+    urgent:       #f38ba8;
+    active:       #a6e3a1;
+
+    background-color: transparent;
+    text-color: @fg;
+
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+}
+
+/* =========================
+   Window
+   ========================= */
+
+window {
+    location: center;
+    anchor: center;
+
+    width: 32%;
+    border: 2px;
+    border-radius: 14px;
+    border-color: @border;
+
+    background-color: @bg;
+
+    padding: 18px;
+}
+
+/* =========================
+   Main Layout
+   ========================= */
+
+mainbox {
+    spacing: 14px;
+    children: [
+        inputbar,
+        listview
+    ];
+}
+
+/* =========================
+   Search Bar
+   ========================= */
+
+inputbar {
+    background-color: @bg-alt;
+
+    border-radius: 10px;
+
+    padding: 10px 14px;
+
+    children: [
+        prompt,
+        entry
+    ];
+}
+
+prompt {
+    text-color: @selected;
+    margin: 0px 10px 0px 0px;
+}
+
+entry {
+    placeholder: "Search Wi-Fi...";
+    placeholder-color: @fg-alt;
+}
+
+/* =========================
+   List View
+   ========================= */
+
+listview {
+    lines: 10;
+    columns: 1;
+
+    fixed-height: false;
+
+    spacing: 8px;
+    scrollbar: false;
+}
+
+/* =========================
+   Elements
+   ========================= */
+
+element {
+    background-color: transparent;
+
+    border-radius: 10px;
+
+    padding: 10px 14px;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element selected.normal {
+    background-color: @selected;
+    text-color: @selected-fg;
+}
+
+element selected.active {
+    background-color: @active;
+    text-color: #11111b;
+}
+
+element selected.urgent {
+    background-color: @urgent;
+    text-color: #11111b;
+}
+
+/* =========================
+   Element Text/Icon
+   ========================= */
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+
+    vertical-align: 0.5;
+}
+
+element-icon {
+    size: 20px;
+
+    background-color: inherit;
+    text-color: inherit;
+}
+
+/* =========================
+   Message Box
+   ========================= */
+
+message {
+    background-color: @bg-alt;
+
+    border-radius: 10px;
+
+    padding: 12px;
+}
+
+textbox {
+    text-color: @fg;
+}

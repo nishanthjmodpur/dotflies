@@ -47,7 +47,9 @@
     "format-wifi": "   {essid}",
     "format-ethernet": "󰈀 Wired",
     "format-disconnected": "⚠ Disconnected",
-    "tooltip-format": "{ifname}: {ipaddr}"
+    "tooltip-format": "{ifname}: {ipaddr}",
+	"on-click": "~/dotflies/rofi/.config/rofi/scripts/wifi.sh"
+
   },
 
   "pulseaudio": {
@@ -79,7 +81,7 @@
 	"exec": "~/.config/waybar/scripts/bluetooth.sh",
     "interval": 5,
     "format": "{}",
-    "on-click": "~/.config/waybar/scripts/bluetooth-toggle.sh"
+    "on-click": "~/dotflies/rofi/.config/rofi/scripts/bluetooth.sh"
   },
 
 "custom/brightness": {
