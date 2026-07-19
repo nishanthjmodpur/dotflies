@@ -87,6 +87,10 @@
       "rev": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
+    "ofirkai.nvim": {
+      "rev": "261581c9f5828691b4dcae67c30c43e5aa37d70a",
+      "src": "https://github.com/ofirgall/ofirkai.nvim"
+    },
     "onedark.nvim": {
       "rev": "df4792accde9db0043121f32628bcf8e645d9aea",
       "src": "https://github.com/navarasu/onedark.nvim"

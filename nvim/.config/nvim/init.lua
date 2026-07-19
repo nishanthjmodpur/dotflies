@@ -33,6 +33,7 @@ vim.pack.add({
 	"https://github.com/folke/tokyonight.nvim",
     "https://github.com/aikhe/fleur.nvim",
     "https://github.com/navarasu/onedark.nvim",
+    "https://github.com/ofirgall/ofirkai.nvim",
 
 	-- Treesitter
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
@@ -82,7 +83,7 @@ vim.cmd("packloadall")
 -- =========================
 -- Colorscheme
 -- =========================
-vim.cmd.colorscheme("kanagawa")
+vim.cmd.colorscheme("ofirkai")
 
 -- =========================
 -- Treesitter
@@ -216,8 +217,8 @@ require("nvim-autopairs").setup()
 -- local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 -- require("lspconfig").qmlls.setup {}
-vim.lsp.config("qmlls", {})
-vim.lsp.enable("qmlls")
+vim.lsp.config("qmlls6", {})
+vim.lsp.enable("qmlls6")
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -292,7 +293,7 @@ local telescope = require("telescope.builtin")
 
 vim.keymap.set("n", "<leader>sf", telescope.find_files, {})
 vim.keymap.set("n", "<leader>sg", telescope.live_grep, {})
-vim.keymap.set("n", "<leader>sb", telescope.buffers, {})
+vim.keymap.set("n", "<leader><leader>", telescope.buffers, {})
 vim.keymap.set("n", "<leader>sh", telescope.help_tags, {})
 vim.keymap.set("n", "<leader>tt", "<cmd>TodoTelescope<CR>")
 vim.keymap.set("n", "<leader>tl", "<cmd>TodoLocList<CR>")
@@ -346,7 +347,8 @@ vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 -- =========================
 require("lualine").setup({
 	options = {
-		theme = "kanagawa",
+		-- theme = "ofirkai",
+        theme = require('ofirkai.statuslines.lualine').theme,
 		section_separators = "",
 		component_separators = "",
 	},
