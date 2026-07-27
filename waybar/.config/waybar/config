@@ -9,8 +9,8 @@
   "modules-right": ["pulseaudio", "network", "custom/bluetooth", "custom/brightness", "battery", "custom/logout", "tray"],
 
   "hyprland/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": true,
+    "disable-scroll": false,
+    "all-outputs": false,
 	"format": "{name}",
     "format-icons": {
       "1": "",
